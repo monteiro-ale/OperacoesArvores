@@ -55,13 +55,29 @@ class BinarySearchTree:
         else:
             return False 
 
-    #mostrar árvore - pré-ordem(raiz, esq, dir)
-    def show(self, current_node):
+     #mostrar árvore - pré-ordem(raiz, esq, dir)
+    def showPre(self, current_node):
         if current_node != None: 
             print('%d' % current_node.getLabel(), end=' ')
             #RECURSIVO
-            self.show(current_node.getLeft())
-            self.show(current_node.getRight())
+            self.showPre(current_node.getLeft())
+            self.showPre(current_node.getRight())
+    
+    #mostrar árvore - pós-ordem(raiz, dir, esq)
+    def showPost(self, current_node):
+        if current_node != None: 
+            print('%d' % current_node.getLabel(), end=' ')
+            #RECURSIVO
+            self.showPost(current_node.getRight())
+            self.showPost(current_node.getLeft())
+   
+    #mostrar árvore - em-ordem(esq, raiz, dir)
+    def showIn(self, current_node):
+        if current_node != None:
+            self.showIn(current_node.getLeft()) 
+            #RECURSIVO
+            print('%d' % current_node.getLabel(), end=' ')
+            self.showIn(current_node.getRight())
 
     #pega raiz
     def getRoot(self):
